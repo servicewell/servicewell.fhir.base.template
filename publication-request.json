@@ -1,0 +1,13 @@
+{
+   "package-id" : "servicewell.fhir.base.template",
+   "version" : "0.1.0",
+   "path" : "https://canonical.fhir.link/servicewell/fhir.base.template/0.1.0",
+   "mode" : "milestone",
+   "status" : "release",
+   "sequence" : "pre-Releases",
+   "desc" : "Initial pre-release.",
+   "first" : true,
+   "title" : "servicewell base ig-template",
+   "ci-build" : "https://build.fhir.org/ig/servicewell/servicewell.fhir.base.template",
+   "category" : "template"
+}
