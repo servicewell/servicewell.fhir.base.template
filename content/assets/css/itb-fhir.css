@@ -88,6 +88,11 @@
     line-height: 1px;
 }
 
+/* Hide line-number anchors injected by the IG publisher inside navbar items */
+.nav.navbar-nav > li > a[name]:not([href]) {
+    display: none;
+}
+
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     background-color: #2e2f30;
     color: #38668b;
