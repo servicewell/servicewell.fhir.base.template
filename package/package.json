@@ -6,9 +6,9 @@
 "description": "Servicewell's base template for fhir implementation Guides",
 "author": "servicewell.se",
 "canonical": "https://canonical.fhir.link/servicewell/fhir.base.template",
-"base": "fhir2.base.template",
+"base": "fhir.base.template.a",
 "dependencies": {
-    "fhir2.base.template": "current",
+    "fhir.base.template.a": "current",
     "flc.fhir.base": "current"
     }
 }
