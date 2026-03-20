@@ -1,7 +1,7 @@
 {
    "package-id" : "servicewell.fhir.base.template",
-   "version" : "0.1.0",
-   "path" : "https://canonical.fhir.link/servicewell/fhir.base.template/0.1.0",
+   "version" : "0.1.1",
+   "path" : "https://canonical.fhir.link/servicewell/fhir.base.template/0.1.1",
    "mode" : "milestone",
    "status" : "release",
    "sequence" : "pre-Releases",

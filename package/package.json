@@ -1,6 +1,6 @@
 {
 "name": "servicewell.fhir.base.template",
-"version": "0.1.0",
+"version": "0.1.1",
 "type": "fhir.template",
 "license": "",
 "description": "Servicewell's base template for fhir implementation Guides",
@@ -8,6 +8,7 @@
 "canonical": "https://canonical.fhir.link/servicewell/fhir.base.template",
 "base": "fhir.base.template",
 "dependencies": {
-    "fhir.base.template": "current"
+    "fhir2.base.template": "current",
+    "flc.fhir.base": "current"
     }
 }
