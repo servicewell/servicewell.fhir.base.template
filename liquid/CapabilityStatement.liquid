@@ -1,31 +1,45 @@
 {% include narrative-start.html %}
-{% if CapabilityStatement.rest %}
-  {% for rest in CapabilityStatement.rest %}
-    {% for resource in rest.resource %}
-      {% if resource.type == 'Patient' %}
-        {% for ext in resource.extension %}
-          {% if ext.url == 'http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination' %}
-            <tr>
-              <td colspan="2">
-                <div style="margin: 10px 0; padding: 10px; border-left: 4px solid #0066cc; background: #f5f5f5;">
-                  <strong>Required Search Parameter Combination:</strong>
-                  <ul>
-                    {% for child_ext in ext.extension %}
-                      {% if child_ext.url == 'required' %}
-                        <li><strong>Required:</strong> <code>{{ child_ext.valueString }}</code></li>
-                      {% elsif child_ext.url == 'optional' %}
-                        <li><strong>Optional:</strong> <code>{{ child_ext.valueString }}</code></li>
-                      {% endif %}
-                    {% endfor %}
-                  </ul>
-                </div>
-              </td>
-            </tr>
-          {% endif %}
+{% for rest in CapabilityStatement.rest %}
+  {% assign patientResources = rest.resource | where: "type", "Patient" %}
+  {% for resource in patientResources %}
+    {% if resource.extension %}
+      {% assign combinations = resource.extension | where: "url", "http://hl7.org/fhir/StructureDefinition/capabilitystatement-search-parameter-combination" %}
+      {% for ext in combinations %}
+<tr>
+  {% include row-header.html header='Patient search parameter combination' %}
+  <td class="content-container">
+    <table>
+      <thead>
+        <tr>
+          <td><em>Parameter</em></td>
+          <td><em>Requirement</em></td>
+          <td><em>Type</em></td>
+        </tr>
+      </thead>
+      <tbody>
+        {% assign requiredParams = ext.extension | where: "url", "required" %}
+        {% for child_ext in requiredParams %}
+        <tr>
+          <td>{{ child_ext.valueString }}</td>
+          <td><strong>Required</strong></td>
+          <td>reference</td>
+        </tr>
         {% endfor %}
-      {% endif %}
-    {% endfor %}
+        {% assign optionalParams = ext.extension | where: "url", "optional" %}
+        {% for child_ext in optionalParams %}
+        <tr>
+          <td>{{ child_ext.valueString }}</td>
+          <td>Optional</td>
+          <td>reference</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </td>
+</tr>
+      {% endfor %}
+    {% endif %}
   {% endfor %}
-{% endif %}
+{% endfor %}
 {% include version.html %}
 {% include narrative-end.html %}
